@@ -1,45 +1,49 @@
-import express from 'express'
-import nodemailer from 'nodemailer'
-import cors from 'cors'
-import rateLimit from 'express-rate-limit'
-import dotenv from 'dotenv'
+import express from "express";
+import nodemailer from "nodemailer";
+import cors from "cors";
+import rateLimit from "express-rate-limit";
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
+const app = express();
 
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
 // Anti-spam (limite requêtes)
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 20,
-})
-app.use('/contact', limiter)
+});
+app.use("/contact", limiter);
 
 // Transporteur OVH SMTP
 const transporter = nodemailer.createTransport({
-  host: 'ssl0.ovh.net', // OVH SMTP
+  host: "ssl0.ovh.net", // OVH SMTP
   port: 465,
   secure: true,
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS,
   },
-})
+});
 
 // Route contact
-app.post('/contact', async (req, res) => {
-  const { name, email, message } = req.body
+app.post("/contact", async (req, res) => {
+  const { name, email, message, website } = req.body;
 
   if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Champs manquants' })
+    return res.status(400).json({ error: "Champs manquants" });
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (website) {
+    return res.status(400).json({ error: "Spam détecté" });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    return res.status(400).json({ error: 'Email invalide' })
+    return res.status(400).json({ error: "Email invalide" });
   }
 
   try {
@@ -53,15 +57,15 @@ app.post('/contact', async (req, res) => {
         <p><b>Email :</b> ${email}</p>
         <p><b>Message :</b><br/>${message}</p>
       `,
-    })
+    });
 
-    res.json({ success: true })
+    res.json({ success: true });
   } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'Erreur serveur' })
+    console.error(err);
+    res.status(500).json({ success: false, error: err.message });
   }
-})
+});
 
 app.listen(3001, () => {
-  console.log('API contact sur http://localhost:3001')
-})
+  console.log("API contact sur http://localhost:3001");
+});

@@ -78,13 +78,6 @@ const animateSuccess = () => {
 <template>
   <div class="scene flex flex-col items-center justify-center px-6">
     <div ref="formContainer" class="glass glass-bordered relative p-8 rounded-2xl max-w-3xl w-full">
-      <!-- Badge fait-main discret -->
-      <span
-        class="absolute top-4 right-4 text-xs tracking-wide px-3 py-1 rounded-full bg-white/5 border border-white/10 hidden md:block"
-      >
-        fait-main
-      </span>
-
       <!-- Titre -->
       <h1 class="fade-up text-4xl font-bold mb-6 text-center">Contactez-moi</h1>
 
@@ -94,7 +87,7 @@ const animateSuccess = () => {
       </p>
 
       <!-- Formulaire -->
-      <form action="POST" @submit.prevent="sendForm" class="form-box space-y-4">
+      <form @submit.prevent="sendForm" class="form-box space-y-4">
         <div class="fade-up">
           <label for="name">Nom et Prénom:</label>
           <input
@@ -133,7 +126,9 @@ const animateSuccess = () => {
         <input type="text" name="website" style="display: none" />
 
         <!-- CTA -->
-        <div class="fade-up flex flex-col md:flex-row items-center gap-4 md:gap-6 mt-6">
+        <div
+          class="fade-up flex flex-col justify-between md:flex-row items-center gap-4 md:gap-6 mt-6"
+        >
           <a
             href="https://linkedin.fr/baptiste-mrtn"
             target="_blank"
@@ -150,10 +145,9 @@ const animateSuccess = () => {
             <span v-if="status !== 'loading'">Envoyer</span>
             <span v-else>Envoi...</span>
           </button>
-
-          <p v-if="status === 'success'" class="success-msg">Message envoyé ✓</p>
-          <p v-if="status === 'error'" class="error-msg">{{ error }}</p>
         </div>
+        <p v-if="status === 'success'" class="success-msg">Message envoyé ✓</p>
+        <p v-if="status === 'error'" class="error-msg">{{ error }}</p>
       </form>
     </div>
   </div>
