@@ -17,7 +17,7 @@ defineProps({
       v-if="link"
       :href="link"
       target="_blank"
-      class="relative block rounded-2xl p-6 border border-white/15 bg-white/5 backdrop-blur-xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-green/50"
+      class="h-full flex-col relative block rounded-2xl p-6 border border-white/15 bg-white/5 backdrop-blur-xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-green/50"
     >
       <!-- title -->
       <h3 class="text-xl font-bold mb-2 tracking-wide group-hover:text-white transition">

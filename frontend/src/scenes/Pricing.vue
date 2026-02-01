@@ -8,14 +8,14 @@ const cardsContainer = ref(null)
 const offers = ref([
   {
     name: 'Starter',
-    price: '590€',
+    price: { value: '590€' },
     description: ['Site vitrine 1 page', 'Design sur mesure', 'Responsive et SEO de base'],
     border: 'border-amber-800',
     glow: '217,119,6',
   },
   {
     name: 'Pro',
-    price: '1 490€',
+    price: { value: '1 490€' },
     description: [
       'Site complet (3-5 pages)',
       'Dashboard admin simple',
@@ -26,7 +26,7 @@ const offers = ref([
   },
   {
     name: 'Sur-mesure',
-    price: '2 900€ - 5 900€',
+    price: { min: '2 900€', max: '5 900€' },
     description: [
       'Application / SaaS',
       'Dashboard avancé + API',

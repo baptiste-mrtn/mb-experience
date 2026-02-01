@@ -126,13 +126,11 @@ const animateSuccess = () => {
         <input type="text" name="website" style="display: none" />
 
         <!-- CTA -->
-        <div
-          class="fade-up flex flex-col justify-between md:flex-row items-center gap-4 md:gap-6 mt-6"
-        >
+        <div class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
           <a
             href="https://linkedin.fr/baptiste-mrtn"
             target="_blank"
-            class="flex items-center gap-3 px-8 py-3 border border-white text-white rounded-full transition-all duration-500 hover:bg-green hover:shadow-[0_0_25px_rgba(9,82,40,0.5)]"
+            class="relative flex items-center gap-3 w-full sm:w-auto text-center px-10 py-3 border border-white text-white rounded-full transition-all duration-500 hover:bg-green hover:shadow-[0_0_25px_rgba(9,82,40,0.5)]"
           >
             <IconBrandLinkedin class="w-5 h-5" />
             Me contacter autrement

@@ -1,19 +1,17 @@
 <template>
   <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50">
     <div
-      class="flex gap-6 px-6 py-3 rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-sm text-white shadow-lg"
+      class="flex sm:gap-6 sm:px-6 sm:py-3 rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-sm text-white shadow-lg px-3 py-1 gap-4"
     >
       <RouterLink
         v-for="item in menu"
         :key="item.path"
         :to="item.path"
-        activeClass="transform scale-125"
-        class="relative px-2 py-1 transition-all duration-300 hover:text-green"
+        activeClass="text-green-200 font-medium"
+        class="relative font-small px-1 py-1 transition-all duration-300 hover:text-green-300 hover:text-md"
       >
         {{ item.label }}
-        <span
-          class="absolute left-0 -bottom-1 h-0.5 w-0 bg-linear-to-r from-green to-blue-500 transition-all duration-300 group-hover:w-full"
-        ></span>
+        <span class="absolute left-0 -bottom-1 h-0.5 w-0"></span>
       </RouterLink>
     </div>
   </nav>

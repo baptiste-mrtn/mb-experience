@@ -45,18 +45,18 @@ const projects = [
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="flex items-center gap-50">
+    <div class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
       <a
-        href="https://github.com/baptiste-mrtn"
+        download
+        href="CV_Baptiste_Martin.pdf"
         target="_blank"
-        class="relative flex items-center gap-3 px-10 py-3 border border-white text-white bg-transparent rounded-full transition-all duration-500 hover:bg-green"
+        class="relative flex items-center gap-3 w-full sm:w-auto text-center px-10 py-3 border border-white text-white bg-transparent rounded-full transition-all duration-500 hover:bg-green"
       >
         <IconBrandGithub class="w-5 h-5" />
         Voir plus
       </a>
 
-      <CTAButton text="Créons le vôtre" link="/pricing" />
+      <CTAButton class="w-full sm:w-auto" text="Créons le vôtre" link="/pricing" />
     </div>
   </div>
 </template>

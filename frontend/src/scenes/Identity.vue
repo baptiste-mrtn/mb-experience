@@ -1,5 +1,6 @@
 <script setup>
 import CTAButton from '@/components/UI/CTAButton.vue'
+import { IconFileInfo } from '@tabler/icons-vue'
 </script>
 
 <template>
@@ -23,16 +24,18 @@ import CTAButton from '@/components/UI/CTAButton.vue'
         </p>
       </div>
     </div>
-    <div class="flex justify-between items-center px-6 gap-50">
+    <div class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
       <a
         download
         href="CV_Baptiste_Martin.pdf"
         target="_blank"
-        class="relative px-10 py-3 border border-white text-white bg-transparent rounded-full transition-all duration-500 hover:bg-green"
+        class="relative flex items-center gap-3 w-full sm:w-auto text-center px-10 py-3 border border-white text-white bg-transparent rounded-full transition-all duration-500 hover:bg-green"
       >
+        <IconFileInfo class="w-5 h-5" />
         Télécharger le CV
       </a>
-      <CTAButton text="Mes projets" link="/projects" />
+
+      <CTAButton class="w-full sm:w-auto" text="Mes projets" link="/projects" />
     </div>
   </div>
 </template>

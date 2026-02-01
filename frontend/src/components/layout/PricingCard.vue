@@ -20,14 +20,23 @@ defineProps({
       ></span>
 
       <p
-        class="relative text-5xl font-bold bg-linear-to-r from-green to-cyan-400 bg-clip-text text-transparent"
+        class="relative text-5xl font-bold text-center bg-linear-to-r from-green to-cyan-400 bg-clip-text text-transparent"
       >
-        {{ price }}
+        <template v-if="price.value">
+          {{ price.value }}
+        </template>
+
+        <template v-else>
+          <span class="whitespace-nowrap">{{ price.min }}</span>
+          <span class="mx-2">–</span>
+          <span class="whitespace-nowrap">{{ price.max }}</span>
+        </template>
       </p>
     </div>
     <ul class="text-gray-300 mb-6 list-none">
       <li v-for="item in description" :key="item" class="flex items-center gap-2 text-sm">
-        <span class="w-1.5 h-1.5 rounded-full bg-green"></span>{{ item }}
+        <span class="w-1.5 h-1.5 rounded-full bg-green"></span>
+        <p class="text-start">{{ item }}</p>
       </li>
     </ul>
   </div>
