@@ -71,7 +71,7 @@ body {
   }
 
   .scene {
-    padding-top: 20vh;
+    padding: 20vh auto;
     height: 100vh;
   }
 }
@@ -88,8 +88,7 @@ body {
 
   .scene {
     flex-direction: column; /* stack vertical sur mobile */
-    padding: 1rem;
-    padding-top: 15vh;
+    padding: 15vh 1rem;
     height: 100vh; /* garder fullscreen */
     justify-content: flex-start; /* éviter compression verticale */
     overflow-y: auto; /* scroll si contenu dépasse la vue */
